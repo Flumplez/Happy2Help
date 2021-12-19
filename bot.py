@@ -90,9 +90,18 @@ async def clear(ctx, amount=5):
     await ctx.channel.purge(limit=amount)
     await ctx.send("Messages have been cleared")
 
-# kick command
-
-
-
+#The below code bans player.
+@client.command()
+@commands.has_permissions(ban_members = True)
+async def ban(ctx, member :  discord.Member, *,reason=None):
+    if member == None or member == ctx.message.author:
+        await ctx.channel.send("You cannot ban yourself")
+        return
+    if reason == None:
+        reason = "For being a jerk!"
+    message = f"You have been banned from {ctx.guild.name} for {reason}"
+    await member.send(message)
+    await member.ban(reason=reason)
+    await ctx.send(f"{member} is banned!")
 
 client.run('OTIxODAzNjYyMTczNTYwOTEy.Yb4Ojw.WzrDYveQSIAHuLm0_26D3h8SbW0')
