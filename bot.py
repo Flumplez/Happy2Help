@@ -83,7 +83,9 @@ async def stop(ctx):
 
 
 # command to clear channel messages
+
 @client.command()
+@commands.has_permissions(administrator=True)
 async def clear(ctx, amount=5):
     await ctx.channel.purge(limit=amount)
     await ctx.send("Messages have been cleared")
@@ -91,6 +93,7 @@ async def clear(ctx, amount=5):
 # kick command
 
 @client.command()
+@commands.has_permissions(administrator=True)
 async def kick(ctx, member: discord.Member, *, reason=None):
     if reason==None:
       reason=" no reason provided"
