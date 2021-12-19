@@ -9,7 +9,7 @@ from discord import TextChannel
 from youtube_dl import YoutubeDL
 
 load_dotenv()
-client = commands.Bot(command_prefix='.')  # prefix our commands with '.'
+client = commands.Bot(command_prefix='!')  # prefix our commands with '.'
 
 players = {}
 
@@ -87,6 +87,19 @@ async def stop(ctx):
 async def clear(ctx, amount=5):
     await ctx.channel.purge(limit=amount)
     await ctx.send("Messages have been cleared")
+
+# kick command
+
+@client.command()
+@commands.has_permissions(kick_members=True)
+async def kick(ctx, member: discord.Member, *, reason=None):
+    if reason==None:
+      reason=" no reason provided"
+    await ctx.guild.kick(member)
+    await ctx.send(f'User {member.mention} has been kicked for {reason}')
+
+# ban command
+
 
 
 client.run('OTIxODAzNjYyMTczNTYwOTEy.Yb4Ojw.WzrDYveQSIAHuLm0_26D3h8SbW0')
