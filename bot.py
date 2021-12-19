@@ -92,15 +92,6 @@ async def clear(ctx, amount=5):
 
 # kick command
 
-@client.command()
-@commands.has_permissions(administrator=True)
-async def kick(ctx, member: discord.Member, *, reason=None):
-    if reason==None:
-      reason=" no reason provided"
-    await ctx.guild.kick(member)
-    await ctx.send(f'User {member.mention} has been kicked for {reason}')
-
-# ban command
 
 
 
