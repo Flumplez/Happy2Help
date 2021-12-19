@@ -7,7 +7,7 @@ chardet==4.0.0
 idna==3.3
 multidict==5.2.0
 pafy==0.5.5
-py-cord==2.0.0a4556
+py-cord==2.0.0a4556+g031b9643
 pycparser==2.21
 PyNaCl==1.4.0
 python-dotenv==0.19.2
