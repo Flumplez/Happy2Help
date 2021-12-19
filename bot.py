@@ -7,6 +7,9 @@ from discord.utils import get
 from discord import FFmpegPCMAudio
 from discord import TextChannel
 from youtube_dl import YoutubeDL
+import aiofiles
+import pafy
+import asyncio
 
 load_dotenv()
 client = commands.Bot(command_prefix='!')  # prefix our commands with '!'
@@ -88,7 +91,6 @@ async def stop(ctx):
 @commands.has_permissions(administrator=True)
 async def clear(ctx, amount=5):
     await ctx.channel.purge(limit=amount)
-    await ctx.send("Messages have been cleared")
 
 #Ban
 
