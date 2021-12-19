@@ -91,7 +91,6 @@ async def clear(ctx, amount=5):
 # kick command
 
 @client.command()
-@commands.has_permissions(kick_members=True)
 async def kick(ctx, member: discord.Member, *, reason=None):
     if reason==None:
       reason=" no reason provided"
