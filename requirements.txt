@@ -7,11 +7,11 @@ chardet==4.0.0
 idna==3.3
 multidict==5.2.0
 pafy==0.5.5
-py-cord==2.0.0a4556+g031b9643
 pycparser==2.21
 PyNaCl==1.4.0
 python-dotenv==0.19.2
 six==1.16.0
 typing_extensions==4.0.1
 yarl==1.7.2
-youtube-dl==2021.12.17
+youtube-dl==2021.12.1
+git+https://github.com/Pycord-Development/pycord
