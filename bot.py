@@ -10,19 +10,23 @@ from youtube_dl import YoutubeDL
 import aiofiles
 import pafy
 import asyncio
+import random
 
 load_dotenv()
 client = commands.Bot(command_prefix='!')  # prefix our commands with '!'
 
 players = {}
 
+#event to check if the bot is ready
 
-@client.event  # check if bot is ready
+@client.event  
 async def on_ready():
     print('Bot online')
 
 
-# command for bot to join the channel of the user, if the bot has already joined and is in a different channel, it will move to the channel the user is in
+# command for bot to join the channel of the user, if the bot has already joined and is in a different channel,
+#  it will move to the channel the user is in
+
 @client.command()
 async def join(ctx):
     channel = ctx.message.author.voice.channel
@@ -32,8 +36,8 @@ async def join(ctx):
     else:
         voice = await channel.connect()
 
-
 # command to play sound from a youtube URL
+
 @client.command()
 async def play(ctx, url):
     YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist': 'True'}
@@ -50,12 +54,13 @@ async def play(ctx, url):
         await ctx.send('Bot is playing')
 
 # check if the bot is already playing
+
     else:
         await ctx.send("Bot is already playing")
         return
 
-
 # command to resume voice if it is paused
+
 @client.command()
 async def resume(ctx):
     voice = get(client.voice_clients, guild=ctx.guild)
@@ -64,8 +69,8 @@ async def resume(ctx):
         voice.resume()
         await ctx.send('Bot is resuming')
 
-
 # command to pause voice if it is playing
+
 @client.command()
 async def pause(ctx):
     voice = get(client.voice_clients, guild=ctx.guild)
@@ -76,6 +81,7 @@ async def pause(ctx):
 
 
 # command to stop voice
+
 @client.command()
 async def stop(ctx):
     voice = get(client.voice_clients, guild=ctx.guild)
@@ -142,6 +148,20 @@ async def unmute(ctx, member: discord.Member):
    embed = discord.Embed(title="unmute", description=f" unmuted-{member.mention}",colour=discord.Colour.light_gray())
    await ctx.send(embed=embed)
 
+# 8ball
 
+@client.command(aliases=['8b', '8ball'])
+async def eight_ball(ctx):
+    responses = [
+    "Yes!",
+    "Maybe!",
+    "Idk, my IQ is only 4!",
+    "Figure it out yourself!",
+    "Really, did you just ask me that?",
+    "Ofc yes!",
+    "I suggest you stop living.",
+    "HELL NAHHH",
+    ]
+    await ctx.send(f"{random.choice(responses)}")
 
 client.run('OTIxODAzNjYyMTczNTYwOTEy.Yb4Ojw.WzrDYveQSIAHuLm0_26D3h8SbW0')
