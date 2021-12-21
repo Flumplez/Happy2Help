@@ -164,4 +164,6 @@ async def eight_ball(ctx):
     ]
     await ctx.send(f"{random.choice(responses)}")
 
+
+
 client.run('OTIxODAzNjYyMTczNTYwOTEy.Yb4Ojw.WzrDYveQSIAHuLm0_26D3h8SbW0')
