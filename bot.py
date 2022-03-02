@@ -1,7 +1,5 @@
 import discord
 import os
-# load our local env so we dont have the token in public
-from dotenv import load_dotenv
 from discord.ext import commands
 from discord.utils import get
 from discord import FFmpegPCMAudio
@@ -12,7 +10,6 @@ import pafy
 import asyncio
 import random
 
-load_dotenv()
 client = commands.Bot(command_prefix='!')  # prefix our commands with '!'
 
 players = {}
