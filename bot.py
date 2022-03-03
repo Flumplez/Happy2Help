@@ -1,5 +1,7 @@
 import discord
 import os
+# load our local env so we dont have the token in public
+from dotenv import load_dotenv
 from discord.ext import commands
 from discord.utils import get
 from discord import FFmpegPCMAudio
@@ -10,6 +12,7 @@ import pafy
 import asyncio
 import random
 
+load_dotenv()
 client = commands.Bot(command_prefix='!')  # prefix our commands with '!'
 
 players = {}
@@ -37,7 +40,7 @@ async def join(ctx):
 
 @client.command()
 async def play(ctx, url):
-    YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist': 'True'}
+    YDL_OPTIONS = {'format': 'bestaudio'}
     FFMPEG_OPTIONS = {
         'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
     voice = get(client.voice_clients, guild=ctx.guild)
