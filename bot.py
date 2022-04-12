@@ -166,4 +166,4 @@ async def eight_ball(ctx):
 
 
 
-client.run('OTIxODAzNjYyMTczNTYwOTEy.Yb4Ojw.HrVvyRbbIsdrenNvenLDrIV1dbY')
+client.run('TOKEN')
